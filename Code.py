@@ -34,18 +34,6 @@ async def 명령어(ctx, cmd: str = None):
             await ctx.send(commands_desc[cmd])
         else:
             await ctx.send("그런 커맨드는 본국의 긴급공멸 우라늄폭풍에 의해 존재하지 않음.")
-
-@bot.command() 
-async def 꼬추2피코미터(message): 
-    await message.channel.send('핵전쟁을 하겠다는 군사도발행위로밖에 해석되지 않는 공격적행보에 본국은 비대칭전략무기로 대응할것임.')
-    
-@bot.command() 
-async def 응디(message):
-    await message.channel.send('아 응디')
-    await message.channel.send('응디')
-    await message.channel.send('응디')
-    await message.channel.send('응디')
-    await message.channel.send('응디')
     
 @bot.command() 
 async def 안녕(message): 
