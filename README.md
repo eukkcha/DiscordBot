@@ -1,2 +1,3 @@
-# llama-bot
+# LlamaBot
+
 Discord Chat Bot, LlamaBot
