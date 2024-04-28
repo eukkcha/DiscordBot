@@ -1,16 +1,26 @@
 import discord
+
 from discord.ext import commands
 
-# 봇 설정
-token = 'llama bot Token'
-intents = discord.Intents.default() # 기본 인텐트 설정
-bot = commands.Bot(command_prefix='라마 ', intents=discord.Intents.all()) # 명령어 접두사 설정, 모든 인텐트 활성화
+# 봇 토큰
+token = '토큰 코드'
+
+# 기본 인텐트 설정
+intents = discord.Intents.default() 
+intents.message_content = True
+
+# 명령어 접두사 설정, 모든 인텐트 활성화
+bot = commands.Bot(
+    command_prefix='라마 ', 
+    intents=discord.Intents.all()
+    ) 
 
 # 봇이 준비되었을 때
 @bot.event
 async def on_ready(): 
     await bot.change_presence(status=discord.Status.online, activity=discord.Game("라마 명령어"))
     print(f'긴급공멸 우라늄폭풍 {bot.user} 프로토콜이 가동준비임을 알림.')
+    print('------')
     
 @bot.command()
 async def 명령어(ctx, cmd: str = None):
@@ -34,16 +44,16 @@ async def 명령어(ctx, cmd: str = None):
             await ctx.send(commands_desc[cmd])
         else:
             await ctx.send("그런 커맨드는 본국의 긴급공멸 우라늄폭풍에 의해 존재하지 않음.")
-    
-@bot.command() 
-async def 안녕(message): 
-    await message.channel.send('안녕하세요 베스킨라빈스입니다')
-        
+
 # say 명령어
 @bot.command()
 async def say(ctx, *, message: str):
     await ctx.message.delete()  # 사용자의 메시지 삭제 
     await ctx.send(message)
+    
+@bot.command() 
+async def 안녕(message): 
+    await message.channel.send('안녕하세요 베스킨라빈스입니다')
 
 # 봇 실행
 bot.run(token)
