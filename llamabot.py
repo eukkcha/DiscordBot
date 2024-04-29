@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # 봇 토큰
-token = '라마봇토큰을여기에'
+token = '토큰'
 
 # 기본 인텐트 설정
 intents = discord.Intents.default() 
@@ -31,7 +31,7 @@ async def 도움말(ctx):
     embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/1233535085635043390/3a12cd88c71c6c8c6fabb0ef26fb07ca.png?size=2048")
     embed.add_field(name="`라마 도움말`", value="도움말 표시", inline=True)
     embed.add_field(name="`라마 날씨`", value="현재 날씨 정보 안내", inline=True)
-    embed.add_field(name="`라마 say [메세지]`", value="[메세지]를 라마봇이 채팅", inline=True)
+    embed.add_field(name="`라마 채팅 [메세지]`", value="[메세지]를 라마봇이 채팅", inline=True)
     embed.add_field(name="`라마 커맨드2`", value="추가 개발 예정2", inline=True)
     embed.add_field(name="`라마 커맨드3`", value="추가 개발 예정3", inline=True)
     embed.add_field(name="`라마 커맨드4`", value="추가 개발 예정4", inline=True)
@@ -39,7 +39,7 @@ async def 도움말(ctx):
     
     await ctx.send(embed=embed)
     
-# 날씨 정보 크롤링
+# 네이버 날씨 정보 크롤링
 def get_weather_info():
     html = requests.get('https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EB%84%A4%EC%9D%B4%EB%B2%84+%EB%82%A0%EC%94%A8')
     soup = BeautifulSoup(html.text, "html.parser")
@@ -51,7 +51,7 @@ def get_weather_info():
     if current_temp and weather_desc:
         return current_temp.text.strip(), weather_desc.text.strip()
     else:
-        return '날씨 정보를 가져오는데 실패했습니다.', '상세 정보 없음'
+        return '날씨 정보를 가져오는데 실패했음을 알림', '상세 정보 없음'
     
     return current_temp, weather_desc
 
@@ -63,11 +63,13 @@ async def 날씨(ctx):
     
     await ctx.send(message)
 
-# say 명령어
+# 채팅 명령어
 @bot.command()
-async def say(ctx, *, message: str):
+async def 채팅(ctx, *, message: str):
     await ctx.message.delete() # 사용자의 메시지 삭제 
     await ctx.send(message)
 
+# 봇 실행
+bot.run(token)
 # 봇 실행
 bot.run(token)
