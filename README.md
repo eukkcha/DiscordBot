@@ -1,6 +1,7 @@
 # LlamaBot
 
 Discord Chat Bot, LlamaBot <br/>
+1인 개발 디스코드 봇, 라마봇 <br/>
 
 ## 개발하면서 참고한 글 <br/>
 디스코드 봇 생성 : https://jhoplin7259.tistory.com/91 <br/><br/>
