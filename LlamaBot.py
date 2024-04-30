@@ -29,12 +29,14 @@ async def 도움말(ctx):
     embed=discord.Embed(title="본국 제1 본정보부 첩보부서", url="https://github.com/eukkcha/LlamaBot", description="조선인민국 호위총국 제14과 첨단양자전산화공수특전대 산하 주식회사 에버랜드 소속 전자동화어트랙션지원병력.:llama:\n\n해당 전동화병기는 시범 운영 중에 있음.\n\n본국 제1 본정보부 첩보부서에서 그동안 작전해온 기밀들을 낱낱히 공개하도록 하겠음.", color=0xf43d8f)
     embed.set_author(name="라마봇", url="https://github.com/eukkcha/LlamaBot")
     embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/1233535085635043390/3a12cd88c71c6c8c6fabb0ef26fb07ca.png?size=2048")
+    
     embed.add_field(name="`라마 도움말`", value="도움말 표시", inline=True)
-    embed.add_field(name="`라마 날씨`", value="현재 날씨 정보 안내", inline=True)
+    embed.add_field(name="`라마 날씨`", value="현재 날씨 정보 표시", inline=True)
     embed.add_field(name="`라마 채팅 [메세지]`", value="[메세지]를 라마봇이 채팅", inline=True)
-    embed.add_field(name="`라마 커맨드2`", value="추가 개발 예정2", inline=True)
-    embed.add_field(name="`라마 커맨드3`", value="추가 개발 예정3", inline=True)
-    embed.add_field(name="`라마 커맨드4`", value="추가 개발 예정4", inline=True)
+    embed.add_field(name="`라마 핑`", value="봇 핑 표시", inline=True)
+    embed.add_field(name="`라마 뻘소리`", value="개발 중", inline=True)
+    embed.add_field(name="`라마 환율`", value="개발 중", inline=True)
+    
     embed.set_footer(text="개발자 : @eukkcha")
     
     await ctx.send(embed=embed)
@@ -46,22 +48,29 @@ def get_weather_info():
     
     current_temp = soup.find('div', {'class':'temperature_text'}) # 현재 날씨
     weather_desc = soup.find('span', {'class':'weather before_slash'}) # 현재 기상
+    dust = soup.find('li', {'class':'item_today level2'}) # 미세 먼지
     
-    # 위에서 찾은 요소의 존재 여부를 확인
-    if current_temp and weather_desc:
-        return current_temp.text.strip(), weather_desc.text.strip()
+    # 크롤링에 실패 했을 시
+    if current_temp and weather_desc and dust:
+        return current_temp.text.strip(), weather_desc.text.strip(), dust.text.strip()
     else:
-        return '날씨 정보를 가져오는데 실패했음을 알림', '상세 정보 없음'
+        return '날씨 정보를 가져오는데 실패했음을 알림', '상세 정보 없음', '오류 발생'
     
-    return current_temp, weather_desc
+    return current_temp, weather_desc, dust
 
 # 날씨 명령어
 @bot.command()
 async def 날씨(ctx):
-    temp, description = get_weather_info()
-    message = f"남조선괴뢰통신정보국포착감시프로세스를 가동중.\n:llama:`{temp}C ({description})`:llama:"
+    temp, description, dust = get_weather_info()
+    message = f"남조선괴뢰통신정보국포착감시프로세스를 가동중\n:llama:`{temp}C ({description}), {dust}`:llama:"
     
     await ctx.send(message)
+    
+# 핑 명령어
+@bot.command()
+async def 핑(ctx):
+    latancy = bot.latency
+    await ctx.send(f'라마국의 긴급공멸프로토콜 속도 : {round(latancy * 1000)}ms')
 
 # 채팅 명령어
 @bot.command()
@@ -69,5 +78,7 @@ async def 채팅(ctx, *, message: str):
     await ctx.message.delete() # 사용자의 메시지 삭제 
     await ctx.send(message)
 
+# 봇 실행
+bot.run(token)
 # 봇 실행
 bot.run(token)
