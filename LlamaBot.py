@@ -80,5 +80,3 @@ async def 채팅(ctx, *, message: str):
 
 # 봇 실행
 bot.run(token)
-# 봇 실행
-bot.run(token)
