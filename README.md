@@ -4,10 +4,10 @@
 1인 개발 디스코드 봇 (Python 3) <br/>
 
 ## 개발 릴리즈
-**USERNAME** <br/>
-`라마봇#5334` <br/> <br/>
 **Authorization Flow** & **Privileged Gateway Intents** <br/>
 ![image](https://github.com/eukkcha/LlamaBot/assets/127178816/4a8edd50-27c6-45c7-995b-ccf4ea92bce7) <br/> <br/>
+**USERNAME** <br/>
+`라마봇#5334` <br/> <br/>
 **명령어** <br/>
 `라마 도움말` 도움말 임베드 출력 <br/>
 `라마 날씨` 네이버 날씨 크롤링 출력 (온도, 날씨, 미세먼지) <br/>
