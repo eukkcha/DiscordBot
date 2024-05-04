@@ -1,7 +1,7 @@
 # LlamaBot
 
 ### Discord Chat Bot, LlamaBot <br/>
-1인 개발 디스코드 봇 (Python 3) <br/>
+1인 개발 디스코드 봇 (Python 3) <br/> <br/>
 
 ## 개발 릴리즈 📃
 **BOT USERNAME** <br/>
@@ -18,7 +18,7 @@
 ❎ 음악 재생 : 상황별 오류가 너무 많음 👉 추후 다시 개발 예정 <br/>
 ❎ ai학습 채팅 : API 사용에 대한 비용이 발생 👉 개발 중단 [참고한 문헌](https://syerco0.com/32) <br/> <br/> 
 **Authorization Flow** & **Privileged Gateway Intents** setting <br/>
-<img src="https://github.com/eukkcha/LlamaBot/assets/127178816/4a8edd50-27c6-45c7-995b-ccf4ea92bce7" width="50%">
+<img src="https://github.com/eukkcha/LlamaBot/assets/127178816/4a8edd50-27c6-45c7-995b-ccf4ea92bce7" width="50%"> <br/> <br/>
 
 ## 도움 받은 글 🙏 <br/>
 [디스코드 봇 생성](https://jhoplin7259.tistory.com/91) <br/>
