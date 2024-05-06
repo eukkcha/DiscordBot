@@ -42,7 +42,7 @@ async def 도움말(ctx):
     embed.add_field(name="`라마 개소리`", value="랜덤 개소리 출력", inline=True)
     embed.add_field(name="`라마 채팅 [메세지]`", value="[메세지]를 라마봇이 출력", inline=True)
     
-    embed.set_footer(text="(라마봇0.1.3)   개발자 : @eukkcha")
+    embed.set_footer(text="(라마봇0.1.1)   개발자 : @eukkcha")
     
     await ctx.send(embed=embed)
     
