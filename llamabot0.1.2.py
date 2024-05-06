@@ -36,24 +36,24 @@ async def 도움말(ctx):
     embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/1233535085635043390/3a12cd88c71c6c8c6fabb0ef26fb07ca.png?size=2048")
     
     embed.add_field(name="`라마 도움말`", value="도움말 출력", inline=True)
-    embed.add_field(name="`라마 날씨`", value="현재 날씨 정보 출력", inline=True)
-    embed.add_field(name="`라마 채팅 [메세지]`", value="[메세지]를 라마봇이 출력", inline=True)
     embed.add_field(name="`라마 핑`", value="봇 핑 출력", inline=True)
+    embed.add_field(name="`라마 안녕`", value="라마봇과 인사하기", inline=True)
+    embed.add_field(name="`라마 날씨`", value="현재 날씨 정보 출력", inline=True)
     embed.add_field(name="`라마 개소리`", value="랜덤 개소리 출력", inline=True)
-    embed.add_field(name="`라마 환율`", value="개발 중", inline=True)
+    embed.add_field(name="`라마 채팅 [메세지]`", value="[메세지]를 라마봇이 출력", inline=True)
     
-    embed.set_footer(text="개발자 : @eukkcha")
+    embed.set_footer(text="(라마봇 0.1.2)   개발자 : @eukkcha")
     
     await ctx.send(embed=embed)
     
 # 네이버 날씨 정보 크롤링
 def get_weather_info():
-    html = requests.get('https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EB%84%A4%EC%9D%B4%EB%B2%84+%EB%82%A0%EC%94%A8')
+    html = requests.get('https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&ssc=tab.nx.all&query=%EB%85%B8%EC%9B%90%EA%B5%AC+%EB%82%A0%EC%94%A8&oquery=%EA%B0%95%EB%82%A8%EA%B5%AC+%EB%82%A0%EC%94%A8&tqi=iBAoTwqptbNssuT1VHwssssssT8-001324')
     soup = BeautifulSoup(html.text, "html.parser")
     
     current_temp = soup.find('div', {'class':'temperature_text'}) # 현재 날씨
     weather_desc = soup.find('span', {'class':'weather before_slash'}) # 현재 기상
-    dust = soup.find('li', {'class':'item_today level2'}) # 미세 먼지
+    dust = soup.find('span', {'class':'txt'}) # 미세 먼지
     
     # 크롤링에 실패 했을 시
     if current_temp and weather_desc and dust:
@@ -67,7 +67,7 @@ def get_weather_info():
 @bot.command()
 async def 날씨(ctx):
     temp, description, dust = get_weather_info()
-    message = f"남조선괴뢰통신정보국포착감시프로세스를 가동중\n:llama:`{temp}C ({description}), {dust}`:llama:"
+    message = f"남조선괴뢰통신정보국포착감시프로세스를 가동중\n:llama:`{temp}C ({description}), 미세먼지 {dust}`:llama:"
     
     await ctx.send(message)
     
