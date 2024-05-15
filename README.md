@@ -1,6 +1,6 @@
 # LlamaBot
 
-### Discord Chat Bot, LlamaBot <br/>
+### Discord Bot, LlamaBot <br/>
 1인 개발 디스코드 봇 (Python 3) <br/> <br/>
 
 ## 개발 릴리즈 📃
